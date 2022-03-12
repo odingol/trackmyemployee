@@ -1,0 +1,26 @@
+{
+  "name": "trackmyemployee",
+  "version": "1.0.0",
+  "description": "Employee Tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odingol/trackmyemployee.git"
+  },
+  "author": "Lamor Odingo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odingol/trackmyemployee/issues"
+  },
+  "homepage": "https://github.com/odingol/trackmyemployee#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.1"
+  }
+}
