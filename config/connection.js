@@ -10,7 +10,8 @@ const sequelize = new Sequelize(
         host: 'localhost',
         dialect: 'mysql',
         port: 3306,
-    }
+    },
+    console.log('Connected to employee_db')
 );
 
 module.exports = sequelize;
