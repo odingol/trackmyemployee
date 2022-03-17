@@ -1,10 +1,10 @@
-const db = require('./config/connection');
 const inquirer = require('inquirer');
-const table = require('console.table');
+const db = require('./config/connection');
+require('console.table');
 
 
 const {startMenu, addEmployee, addRole, addDepartment, updateEmployee} = require('./questions/prompt');
-const ExpandPrompt = require('inquirer/lib/prompts/expand');
+
 
 // Testing the connection to the employees_db
 db.connect((err) => (err) ? console.log(err) : initialPrompt());
@@ -36,32 +36,39 @@ const initialPrompt = () => {
                 updateEmployeeRole();
                 break;
             case "Quit":
-                endPrompt();
+                db.end();
                 break;
             default:
-                endPrompt();              
+              db.end();
         }
-    })
+    });
 };
 
 // Using queries to view the available departments, roles, and employees
 
 const viewDepartments = () => {
-    db.query('SELECT * FROM departments', (err, res) => {
-        (err) ? console.log(err) : console.table(res); initialPrompt();
-    })
+    db.query('SELECT * FROM department', (err, res) => {
+        // (err) ? console.log(err) : console.table(res); initialPrompt();
+        if(err) {
+            console.log(err);
+        }
+        else {
+            console.table(res);
+            initialPrompt();
+        }
+    });
 };
 
 const viewRoles = () => {
     db.query('SELECT * FROM roles', (err, res) => {
         (err) ? console.log(err) : console.table(res); initialPrompt();
-    })
+    });
 };
 
 const viewEmployees = () => {
     db.query('SELECT * FROM employee', (err, res) => {
         (err) ? console.log(err) : console.table(res); initialPrompt();
-    })
+    });
 };
 
 
@@ -73,7 +80,7 @@ const gainDpt = () => {
         db.query('INSERT INTO department (names) VALUES (?)', response.deptNames, (err, res) => {
             (err) ? console.log(err) : console.log(`The ${response.deptNames} department has been successfully added to the department table!`);
         })
-    })
+    });
 };
 
 const gainRole = () => {
@@ -82,8 +89,8 @@ const gainRole = () => {
         db.query(`INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`, [response.title, response.salary, response.department], (err, res) => {
             (err) ? console.log(err) : console.log(`The ${response.title} has been succesfully added to the roles table!`)
         })
-    })
-}
+    });
+};
 
 
 const gainEmployee = () => {
@@ -96,8 +103,13 @@ const gainEmployee = () => {
 };
 
 const updateEmployeeRole = () => {
-    inquirer.prompt()
-}
+    inquirer.prompt(updateEmployee)
+    .then((response) => {
+        db.query('UPDATE employee SET role_id = ? WHERE id = ?', [response.update, response.newRole], (err, res) => {
+            (err) ? console.log(err) : console.log(`${response.update} has been successfully updated as a ${response.newRole}!`); initialPrompt();
+        })
+    });
+};
 
 
 
