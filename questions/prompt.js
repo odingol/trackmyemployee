@@ -28,7 +28,7 @@ const addEmployee = [
         message: "What is the employee's role in the company?",
         choices: async () => {
             try {
-                const outcome = await db.promise().query('SELECT title AS positions, id AS value FROM roles');
+                const outcome = await db.promise().query('SELECT title AS name, id AS value FROM roles')
                 return outcome[0];
             } catch (err) {
                 throw err;
@@ -41,7 +41,7 @@ const addEmployee = [
         message: "Who is the employee's manager in the company?",
         choices: async () => {
             try{
-                const outcome = await db.promise().query('SELECT CONCAT(first_name, " ", last_name) AS name, id AS value FROM employees');
+                const outcome = await db.promise().query('SELECT CONCAT(first_name, " ", last_name) AS name, id AS value FROM employee');
                 return outcome[0];
             } catch (err) {
                 throw err;
@@ -67,7 +67,7 @@ const addRole = [
         message: "Which department does the employee belong to?",
         choices: async () => {
             try{
-                const outcome = await db.promise().query('SELECT names AS department_name, id AS value FROM department');
+                const outcome = await db.promise().query('SELECT department_name AS name, id AS value FROM department');
                 return outcome[0];
             } catch (err) {
                 throw err;
@@ -104,7 +104,7 @@ const updateEmployee = [
         message: "What is this employee's new role?",
         choices: async () => {
             try{
-                const outcome = await db.promise().query('SELECT title AS position, id AS value FROM roles');
+                const outcome = await db.promise().query('SELECT title AS name, id AS value FROM roles');
                 return outcome[0];
             } catch (err) {
                 throw err;
