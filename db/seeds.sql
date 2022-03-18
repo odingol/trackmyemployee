@@ -17,8 +17,8 @@ VALUES
 ('Accountant', 65000, 3),
 ('Systems Analyst', 55000, 4),
 ('System Administrator', 50000, 4),
-('Production Opeartor', 48000, 5);
-('Production Associate', 35000, 5),
+('Production Opeartor', 48000, 5),
+('Production Associate', 35000, 5);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
@@ -33,5 +33,5 @@ VALUES
 ('Aubrey', 'Summers', 9, NULL),
 ('Tina', 'Lee', 10, 7),
 ('Hannah', 'Stevens', 11, 7),
-('Josh', 'Zucherburg', 11, 7),
+('Josh', 'Zucherburg', 11, 7);
 

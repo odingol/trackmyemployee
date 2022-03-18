@@ -7,6 +7,7 @@ const startMenu = [
         name: "options",
         message: "Hello, what would you like to do today?",
         choices: ["View departments", "View roles", "View employees", "Add a department", "Add a role", "Add employee(s)", "Update an employee role", "Quit"],
+        default: "View departments"
     }
 ];
 
@@ -26,15 +27,13 @@ const addEmployee = [
         name: "role",
         message: "What is the employee's role in the company?",
         choices: async () => {
-            try{
-                const outcome = await db.promise().query('SELECT title AS position, id AS value FROM roles');
+            try {
+                const outcome = await db.promise().query('SELECT title AS positions, id AS value FROM roles');
                 return outcome[0];
             } catch (err) {
                 throw err;
             }
-
         }
-
     },
     {
         type: "list",
@@ -55,7 +54,7 @@ const addRole = [
     {
         type: "input",
         name: "title",
-        messagew: "What is the name of the role?"
+        message: "What is the name of the role?"
     },
     {
         type: "input",
@@ -93,6 +92,7 @@ const updateEmployee = [
         choices: async () => {
             try{
                 const outcome = await db.promise().query('SELECT CONCAT(first_name, " ", last_name) AS name, id AS value FROM employee');
+                return outcome[0];
             } catch (err) {
                 throw err;
             }
@@ -105,6 +105,7 @@ const updateEmployee = [
         choices: async () => {
             try{
                 const outcome = await db.promise().query('SELECT title AS position, id AS value FROM roles');
+                return outcome[0];
             } catch (err) {
                 throw err;
             }

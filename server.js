@@ -7,13 +7,19 @@ const {startMenu, addEmployee, addRole, addDepartment, updateEmployee} = require
 
 
 // Testing the connection to the employees_db
-db.connect((err) => (err) ? console.log(err) : initialPrompt());
+db.connect((err) => {
+    if (err) {
+        throw err;
+    } else {
+        initialPrompt()
+    }
+});
+
 
 
 const initialPrompt = () => {
-    inquirer.prompt(startMenu)
-    .then((response) => {
-        switch(response.choices) {
+    inquirer.prompt(startMenu).then((response) => {
+        switch(response.options) {
             case "View departments":
                 viewDepartments();
                 break;
@@ -36,6 +42,9 @@ const initialPrompt = () => {
                 updateEmployeeRole();
                 break;
             case "Quit":
+                console.log("----------------------");
+                console.log("See you next time!");
+                console.log("----------------------");
                 db.end();
                 break;
             default:
@@ -78,7 +87,7 @@ const gainDpt = () => {
     inquirer.prompt(addDepartment)
     .then((response) => {
         db.query('INSERT INTO department (names) VALUES (?)', response.deptNames, (err, res) => {
-            (err) ? console.log(err) : console.log(`The ${response.deptNames} department has been successfully added to the department table!`);
+            (err) ? console.log(err) : console.log(`The ${response.deptNames} department has been successfully added to the department table!`); initialPrompt();
         })
     });
 };
@@ -87,7 +96,7 @@ const gainRole = () => {
     inquirer.prompt(addRole)
     .then((response) => {
         db.query(`INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)`, [response.title, response.salary, response.department], (err, res) => {
-            (err) ? console.log(err) : console.log(`The ${response.title} has been succesfully added to the roles table!`)
+            (err) ? console.log(err) : console.log(`The ${response.title} has been succesfully added to the roles table!`); initialPrompt();
         })
     });
 };
