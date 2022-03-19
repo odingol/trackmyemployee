@@ -67,7 +67,7 @@ const addRole = [
         message: "Which department does the employee belong to?",
         choices: async () => {
             try{
-                const outcome = await db.promise().query('SELECT department_name AS name, id AS value FROM department');
+                const outcome = await db.promise().query('SELECT names AS name, id AS value FROM department');
                 return outcome[0];
             } catch (err) {
                 throw err;

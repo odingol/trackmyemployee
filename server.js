@@ -115,7 +115,7 @@ const updateEmployeeRole = () => {
     inquirer.prompt(updateEmployee)
     .then((response) => {
         db.query('UPDATE employee SET role_id = ? WHERE id = ?', [response.update, response.newRole], (err, res) => {
-            (err) ? console.log(err) : console.log(`${response.update} has been successfully updated as a ${response.newRole}!`); initialPrompt();
+            (err) ? console.log(err) : console.log('Employee has been successfully updated!'); initialPrompt();
         })
     });
 };
