@@ -30,10 +30,10 @@ SO THAT they can view and manage the departments, roles, and employees in their 
 npm install
 ```
 
-3) Once step 2 is completed, copy the code "node index.js" and paste inside the terminal to begin answering the prompt questions 
+3) Once step 2 is completed, copy the code "node server.js" and paste inside the terminal to begin answering the prompt questions 
 
 ```bash
-node index.js
+node server.js
 ``` 
  ## Usage
  <br>
