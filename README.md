@@ -20,8 +20,6 @@ SO THAT they can view and manage the departments, roles, and employees in their 
     
 1) Go to my Github and clone this repo
 
-![Git Clone Navigation]()
-
 <br>
 
 2) Once downloaded, copy the code "npm install" and paste inside the terminal of your code editor
@@ -30,7 +28,16 @@ SO THAT they can view and manage the departments, roles, and employees in their 
 npm install
 ```
 
-3) Once step 2 is completed, copy the code "node server.js" and paste inside the terminal to begin answering the prompt questions 
+3) Login to mysql through the database folder. Once you are logged in to the correct folder run the following commands in the correct order
+
+```bash
+SOURCE schema.sql
+```
+```bash
+SOURCE seeds.sql
+```
+
+4) Once step 3 is completed, copy the code "node server.js" and paste inside the terminal to begin answering the prompt questions 
 
 ```bash
 node server.js
@@ -40,13 +47,13 @@ node server.js
 
 This app is designed to create a CMS application based off of the user's input. Users would interact with the command-line to view all departments, view all roles, view all employees, add a department, add a role, add an employeee, or choose to update an employee role.
 
-[CLICK HERE]() if you would like to follow along on YouTube.
+[CLICK HERE](https://youtu.be/L-tbtkHcXIs) if you would like to follow along on YouTube.
 
 <br>Here is an example of the use of the application:
 
 <br>
 
-![Employee Tracker Functionality]()
+![Employee Tracker Functionality](./img/employee-track-demo.gif)
 <br><br>
     
 ## License 

@@ -10,7 +10,7 @@ INSERT INTO roles (title, salary, department_id)
 VALUES
 ('Sales Manager', 155000, 1),
 ('Account Manager', 105000, 1),
-('Civil Engineering', 80000, 2),
+('Civil Engineer', 80000, 2),
 ('Contract Engineer', 75000, 2),
 ('Software Engineer', 165000, 2),
 ('Financial Analyst', 125000, 3),
